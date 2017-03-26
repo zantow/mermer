@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'from master-mermer'
+        sh 'echo from master-mermer'
       }
     }
   }
