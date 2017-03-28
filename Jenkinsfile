@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('asdf') {
       steps {
-        sh 'asdf'
+        sh 'echo master'
       }
     }
   }
