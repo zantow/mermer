@@ -24,16 +24,16 @@ done
           "Firefox": {
             sh '''for e in asdf fwef oijewf lwejf lwekfj wlekfjwlekfj wef lwekfj welkf jwlefkj wlefj; do
 echo $e
-sleep 1
+sleep 3
 done
 '''
             
           },
           "IE": {
-            node(label: '*') {
+            retry(count: 5) {
               sh '''for e in asdf fwef oijewf lwejf lwekfj wlekfjwlekfj wef lwekfj welkf jwlefkj wlefj; do
 echo $e
-sleep 1
+sleep 2
 done
 '''
             }
