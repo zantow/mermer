@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '''for e in asdf fwef oijewf lwejf lwekfj wlekfjwlekfj wef lwekfj welkf jwlefkj wlefj; do
+        sh '''for e in a b c d e f g h i j k l m n o p q r; do
 echo $e
 sleep 1
 done
