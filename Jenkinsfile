@@ -7,6 +7,12 @@ pipeline {
 echo "step happening"
 echo $e
 sleep 2
+echo "more stuff happening"
+sleep 2
+echo "still more stuff happening"
+sleep 2
+echo "finished $e"
+sleep 2
 done
 '''
       }
