@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
+        sh '''for e in 1; do
 echo "step $e happening"
 sleep 1
 echo "more stuff happening - $e"
@@ -20,7 +20,7 @@ done
       steps {
         parallel(
           "Chrome": {
-            sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
+            sh '''for e in 1; do
 echo "chrome $e happening"
 sleep 1
 echo "more stuff happening - $e"
@@ -34,7 +34,7 @@ done
             
           },
           "Firefox": {
-            sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
+            sh '''for e in 1; do
 echo "firefox $e happening"
 sleep 1
 echo "more stuff happening - $e"
@@ -49,7 +49,7 @@ done
           },
           "IE": {
             retry(count: 5) {
-              sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
+              sh '''for e in 1; do
 echo "ie $e happening"
 sleep 1
 echo "more stuff happening - $e"
@@ -69,7 +69,7 @@ done
     }
     stage('Deploy') {
       steps {
-        sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
+        sh '''for e in 1; do
 echo "deploy $e happening"
 sleep 1
 echo "more stuff happening - $e"
