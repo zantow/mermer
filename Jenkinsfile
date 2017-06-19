@@ -6,6 +6,8 @@ pipeline {
         sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
 echo "step $e happening"
 sleep 1
+echo "step $e done"
+sleep 1
 done
 '''
       }
@@ -17,6 +19,8 @@ done
         sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
 echo "chrome $e happening"
 sleep 1
+echo "step $e done"
+sleep 1
 done
 '''
             
@@ -24,6 +28,8 @@ done
           "Firefox": {
         sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
 echo "firefox $e happening"
+sleep 1
+echo "step $e done"
 sleep 1
 done
 '''
@@ -33,6 +39,8 @@ done
             retry(count: 5) {
         sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
 echo "ie $e happening"
+sleep 1
+echo "step $e done"
 sleep 1
 done
 '''
@@ -47,6 +55,8 @@ done
       steps {
         sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
 echo "deploy $e happening"
+sleep 1
+echo "step $e done"
 sleep 1
 done
 '''
