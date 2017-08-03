@@ -79,7 +79,7 @@ sleep 1
 echo "finished $e"
 sleep 1
 done
-'''
+echo done'''
       }
     }
   }
