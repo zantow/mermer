@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
+        sh '''#test
+for e in 1 2 3 4 5 6 7 8 9 0; do
 echo "step $e happening"
 sleep 1
 echo "more stuff happening - $e"
@@ -14,6 +15,7 @@ echo "finished $e"
 sleep 1
 done
 '''
+        echo 'HELO'
       }
     }
     stage('Test') {
