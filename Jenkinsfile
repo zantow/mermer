@@ -15,7 +15,6 @@ echo "finished $e"
 sleep 1
 done
 '''
-        echo 'HELO'
       }
     }
     stage('Test') {
