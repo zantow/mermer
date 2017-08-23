@@ -15,6 +15,11 @@ echo "finished $e"
 sleep 1
 done
 '''
+        node(label: '*') {
+          sleep 60
+          echo 'Done sleeping'
+        }
+        
       }
     }
     stage('Test') {
