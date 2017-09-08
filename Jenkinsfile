@@ -17,9 +17,9 @@ done
       }
     }
     stage('Test') {
-      steps {
-        parallel(
-          "Chrome": {
+      parallel {
+        stage('Chrome') {
+          steps {
             sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
 echo "chrome $e happening"
 sleep 0.1
@@ -31,9 +31,10 @@ echo "finished $e"
 sleep 0.1
 done
 '''
-            
-          },
-          "Firefox": {
+          }
+        }
+        stage('Firefox') {
+          steps {
             sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
 echo "firefox $e happening"
 sleep 0.1
@@ -45,9 +46,10 @@ echo "finished $e"
 sleep 0.1
 done
 '''
-            
-          },
-          "IE": {
+          }
+        }
+        stage('IE') {
+          steps {
             retry(count: 5) {
               sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
 echo "ie $e happening"
@@ -62,9 +64,8 @@ done
 '''
             }
             
-            
           }
-        )
+        }
       }
     }
     stage('Deploy') {
