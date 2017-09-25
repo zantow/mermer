@@ -4,7 +4,6 @@ pipeline {
     stage('Build') {
       steps {
         sh '''# whee!
-
 for e in 1 2 3 4 5 6 7 8 9 0; do
 echo "step $e happening"
 sleep 0.1
