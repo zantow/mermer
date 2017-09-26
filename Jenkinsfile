@@ -72,6 +72,7 @@ touch "dist/client.js"'''
         sh 'ls -alFh dist'
         sh '''APP_DIR=/var/lib/tomcat6/webapps
 # get rid of old war file
+echo $TOMCAT_HOME
 rm -rf $APP_DIR/ROOT
 # copy new war file
 cp target/server.war $APP_DIR/server.war
