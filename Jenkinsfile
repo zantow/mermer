@@ -12,6 +12,7 @@ pipeline {
           }
           steps {
             sh '''echo "Building the server code..."
+mvn --version
 mkdir -p target
 touch "target/server.war"'''
             stash(name: 'server', includes: '**/*.war')
@@ -28,7 +29,6 @@ touch "target/server.war"'''
           steps {
             sh '''echo "Building the client code..."
 npm install --save react
-mvn --version
 mkdir -p dist
 touch "dist/client.js"'''
             stash(name: 'client', includes: '**/dist/*.js')
