@@ -82,7 +82,8 @@ mkdir -p $APP_DIR/ROOT
 cp dist/* $APP_DIR/ROOT
 # restart tomcat
 service --status-all
-service tomcat8 restart'''
+/usr/local/tomcat/start.sh
+'''
         input(message: 'Deploy!', ok: 'Go, go, go!')
       }
     }
