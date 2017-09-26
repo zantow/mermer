@@ -69,12 +69,12 @@ touch "dist/client.js"'''
       steps {
         unstash 'server'
         unstash 'client'
-        sh 'ls -alFh target'
+        sh 'ls -alFh client'
         sh '''APP_DIR=/var/lib/tomcat6/webapps
 # get rid of old war file
 rm -rf $APP_DIR/ROOT
 # copy new war file
-cp example_dir/ROOT.war $APP_DIR
+cp target/server.war $APP_DIR/server.war
 # restart tomcat
 service tomcat6 restart'''
         input(message: 'Deploy!', ok: 'Go, go, go!')
