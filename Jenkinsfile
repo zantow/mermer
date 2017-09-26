@@ -69,9 +69,10 @@ touch "dist/client.js"'''
       steps {
         unstash 'server'
         unstash 'client'
-        sh '''APP_DIR=/usr/local/tomcat/webapps/
+        sh '''APP_DIR=/usr/local/tomcat/webapps
 # get rid of old war file
-ls -alFh $APP_DIR
+whoami
+ls -alFh $APP_DIR/ROOT
 rm -rf $APP_DIR/ROOT
 # copy new war file
 cp target/server.war $APP_DIR/server.war
