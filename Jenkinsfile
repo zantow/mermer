@@ -30,7 +30,7 @@ touch "target/server.war"'''
             sh '''echo "Building the client code..."
 npm install --save react
 mkdir -p dist
-cat dist/index.jsp <<EOF
+cat > dist/index.html <<EOF
 hello!
 EOF
 touch "dist/client.js"'''
