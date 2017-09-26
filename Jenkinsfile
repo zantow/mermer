@@ -30,7 +30,9 @@ touch "target/server.war"'''
             sh '''echo "Building the client code..."
 npm install --save react
 mkdir -p dist
-cat "hello!" > dist/index.html
+cat dist/index.html <<EOF
+hello!
+EOF
 touch "dist/client.js"'''
             stash(name: 'client', includes: '**/dist/*.js')
           }
