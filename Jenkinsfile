@@ -63,6 +63,7 @@ touch "dist/client.js"'''
       agent {
         docker {
           image 'tomcat:8.0-jre8'
+          args '-u 1000:50'
         }
         
       }
