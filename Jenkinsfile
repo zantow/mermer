@@ -26,6 +26,8 @@ touch "target/server.war"'''
           }
           steps {
             sh '''echo "Building the client code..."
+npm install --save react
+mvn --version
 mkdir -p dist
 touch "dist/client.js"'''
             stash(name: 'client', includes: '**/dist/*.js')
@@ -78,7 +80,7 @@ cp target/server.war $APP_DIR/server.war
 mkdir -p $APP_DIR/ROOT
 cp dist/* $APP_DIR/ROOT
 # restart tomcat
-service tomcat6 restart'''
+service tomcat restart'''
         input(message: 'Deploy!', ok: 'Go, go, go!')
       }
     }
