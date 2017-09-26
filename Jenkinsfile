@@ -18,6 +18,12 @@ touch "target/server.war"'''
           }
         }
         stage('Client') {
+          agent {
+            docker {
+              image 'node:6'
+            }
+            
+          }
           steps {
             sh '''echo "Building the client code..."
 mkdir -p dist
