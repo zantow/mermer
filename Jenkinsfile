@@ -2,90 +2,60 @@ pipeline {
   agent any
   stages {
     stage('Build') {
-      steps {
-        sh '''#test
-for e in 1 2 3 4 5 6 7 8 9 0; do
-echo "step $e happening"
-sleep 1
-echo "more stuff happening - $e"
-sleep 1
-echo "still more stuff happening - $e"
-sleep 1
-echo "finished $e"
-sleep 1
-done
-'''
-        node(label: '*') {
-          sleep 60
-          echo 'Done sleeping'
+      parallel {
+        stage('Server') {
+          agent {
+            docker {
+              image 'maven/3.5-jdk-8-alpine'
+            }
+            
+          }
+          steps {
+            sh 'echo "Building the server code...'
+          }
         }
-        
+        stage('Client') {
+          steps {
+            sh 'echo "Building the client code...'
+          }
+        }
       }
     }
     stage('Test') {
-      steps {
-        parallel(
-          "Chrome": {
-            sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
-echo "chrome $e happening"
-sleep 1
-echo "more stuff happening - $e"
-sleep 1
-echo "still more stuff happening - $e"
-sleep 1
-echo "finished $e"
-sleep 1
-done
-'''
-            
-          },
-          "Firefox": {
-            sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
-echo "firefox $e happening"
-sleep 1
-echo "more stuff happening - $e"
-sleep 1
-echo "still more stuff happening - $e"
-sleep 1
-echo "finished $e"
-sleep 1
-done
-'''
-            
-          },
-          "IE": {
-            retry(count: 5) {
-              sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
-echo "ie $e happening"
-sleep 1
-echo "more stuff happening - $e"
-sleep 1
-echo "still more stuff happening - $e"
-sleep 1
-echo "finished $e"
-sleep 1
-done
-'''
+      parallel {
+        stage('Chrome') {
+          agent {
+            docker {
+              image 'selenium/standalone-chrome'
             }
             
+          }
+          steps {
+            sh 'mvn test -Dbrowser=chrome'
+          }
+        }
+        stage('Firefox') {
+          agent {
+            docker {
+              image 'selenium/standalone-firefox'
+            }
             
           }
-        )
+          steps {
+            sh 'mvn test -Dbrowser=firefox'
+          }
+        }
       }
     }
-    stage('Deploy') {
+    stage('QA') {
+      agent {
+        docker {
+          image 'tomcat/8.0-jre-8'
+        }
+        
+      }
       steps {
-        sh '''for e in 1 2 3 4 5 6 7 8 9 0; do
-echo "deploy $e happening"
-sleep 1
-echo "more stuff happening - $e"
-sleep 1
-echo "still more stuff happening - $e"
-sleep 1
-echo "finished $e"
-sleep 1
-done
-echo done'''
+        sh 'sh \'tomcat/run.sh\''
       }
     }
   }
