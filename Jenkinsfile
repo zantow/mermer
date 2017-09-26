@@ -75,6 +75,7 @@ touch "dist/client.js"'''
 rm -rf $APP_DIR/ROOT
 # copy new war file
 cp target/server.war $APP_DIR/server.war
+cp client/* $APP_DIR/ROOT
 # restart tomcat
 service tomcat6 restart'''
         input(message: 'Deploy!', ok: 'Go, go, go!')
