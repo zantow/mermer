@@ -11,12 +11,12 @@ pipeline {
             
           }
           steps {
-            sh 'echo "Building the server code...'
+            sh 'echo "Building the server code..."'
           }
         }
         stage('Client') {
           steps {
-            sh 'echo "Building the client code...'
+            sh 'echo "Building the client code..."'
           }
         }
       }
