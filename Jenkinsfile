@@ -34,7 +34,7 @@ cat > dist/index.html <<EOF
 hello!
 EOF
 touch "dist/client.js"'''
-            stash(name: 'client', includes: '**/dist/*.js')
+            stash(name: 'client', includes: '**/dist/*')
           }
         }
       }
