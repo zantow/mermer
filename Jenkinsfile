@@ -83,9 +83,6 @@ cp dist/* $APP_DIR/ROOT
 # restart tomcat
 service --status-all
 ls -alFh /usr/local/tomcat/bin
-/usr/local/tomcat/bin/shutdown.sh
-sleep 1
-killall tomcat
 /usr/local/tomcat/bin/startup.sh
 '''
         input(message: 'Deploy!', ok: 'Go, go, go!')
