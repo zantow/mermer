@@ -30,6 +30,7 @@ touch "target/server.war"'''
             sh '''echo "Building the client code..."
 npm install --save react
 mkdir -p dist
+cat "hello!" > dist/index.html
 touch "dist/client.js"'''
             stash(name: 'client', includes: '**/dist/*.js')
           }
@@ -80,9 +81,7 @@ rm -rf $APP_DIR/ROOT
 cp target/server.war $APP_DIR/server.war
 mkdir -p $APP_DIR/ROOT
 cp dist/* $APP_DIR/ROOT
-# restart tomcat
-service --status-all
-ls -alFh /usr/local/tomcat/bin
+# start tomcat
 /usr/local/tomcat/bin/startup.sh
 '''
         input(message: 'Deploy!', ok: 'Go, go, go!')
