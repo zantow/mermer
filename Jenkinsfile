@@ -57,7 +57,14 @@ pipeline {
         
       }
       steps {
-        sh 'sh \'tomcat/run.sh\''
+        sh '''APP_DIR=/var/lib/tomcat6/webapps
+# get rid of old war file
+rm -rf $APP_DIR/ROOT
+# copy new war file
+cp example_dir/ROOT.war $APP_DIR
+# restart tomcat
+service tomcat6 restart'''
+        input(message: 'Deploy!', ok: 'Go, go, go!')
       }
     }
     stage('Deploy') {
