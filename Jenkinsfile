@@ -11,13 +11,17 @@ pipeline {
             
           }
           steps {
-            sh 'echo "Building the server code..."'
+            sh '''echo "Building the server code..."
+mkdir -p target
+touch "target/server.war"'''
             stash(name: 'server', includes: '**/*.war')
           }
         }
         stage('Client') {
           steps {
-            sh 'echo "Building the client code..."'
+            sh '''echo "Building the client code..."
+mkdir -p dist
+touch "dist/client.js"'''
             stash(name: 'client', includes: '**/dist/*.js')
           }
         }
