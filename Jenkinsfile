@@ -12,11 +12,13 @@ pipeline {
           }
           steps {
             sh 'echo "Building the server code..."'
+            stash(name: 'server', includes: '**/*.war')
           }
         }
         stage('Client') {
           steps {
             sh 'echo "Building the client code..."'
+            stash(name: 'client', includes: '**/dist/*.js')
           }
         }
       }
@@ -56,6 +58,13 @@ pipeline {
       }
       steps {
         sh 'sh \'tomcat/run.sh\''
+      }
+    }
+    stage('Deploy') {
+      steps {
+        unstash 'server'
+        unstash 'client'
+        echo 'sh "scp *.war production/"'
       }
     }
   }
