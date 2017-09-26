@@ -93,7 +93,11 @@ cp dist/* $APP_DIR/ROOT
       steps {
         unstash 'server'
         unstash 'client'
-        echo 'sh "scp *.war production/"'
+        sh '''# deploy the exact artifacts to production
+echo "Deploying:"
+ls -alFh
+'''
+        echo 'Success!'
       }
     }
   }
