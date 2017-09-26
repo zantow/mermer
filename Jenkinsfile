@@ -37,7 +37,7 @@ touch "dist/client.js"'''
             
           }
           steps {
-            sh 'mvn test -Dbrowser=chrome'
+            sh 'echo \'mvn test -Dbrowser=chrome\''
           }
         }
         stage('Firefox') {
@@ -48,7 +48,7 @@ touch "dist/client.js"'''
             
           }
           steps {
-            sh 'mvn test -Dbrowser=firefox'
+            sh 'echo \'mvn test -Dbrowser=firefox\''
           }
         }
       }
