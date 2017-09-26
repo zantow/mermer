@@ -69,7 +69,7 @@ touch "dist/client.js"'''
       steps {
         unstash 'server'
         unstash 'client'
-        sh 'ls -alFh client'
+        sh 'ls -alFh dist'
         sh '''APP_DIR=/var/lib/tomcat6/webapps
 # get rid of old war file
 rm -rf $APP_DIR/ROOT
