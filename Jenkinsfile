@@ -12,7 +12,7 @@ pipeline {
           }
           steps {
             sh '''echo "Building the server code..."
-mvn --version
+mvn -version
 mkdir -p target
 touch "target/server.war"'''
             stash(name: 'server', includes: '**/*.war')
