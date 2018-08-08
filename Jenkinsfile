@@ -3,7 +3,10 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        withSonarQubeEnv('asdf'){
+        withSonarQubeEnv installationName='uhhh-the-installationName' {
+          echo 'SonarQube'
+        }
+        withSonarQubeEnv('maybe-the-installationName'){
           echo 'SonarQube'
         }
         sh '''#test
