@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '''cat 'some report' > target/report.html'''
+        sh '''echo 'some report' > target/report.html'''
         publishHTML (target: [
           allowMissing: false,
           alwaysLinkToLastBuild: false,
