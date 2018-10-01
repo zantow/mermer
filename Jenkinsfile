@@ -5,7 +5,7 @@ pipeline {
       steps {
         sh '''mkdir -p target
         echo 'some report' > target/report.html
-        echo 'some report2' > target/report.html
+        echo 'some report2' > target/report _2.html
 '''
         publishHTML (target: [
           allowMissing: false,
