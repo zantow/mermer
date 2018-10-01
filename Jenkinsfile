@@ -3,7 +3,9 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '''echo 'some report' > target/report.html'''
+        sh '''mkdir -p target
+        echo 'some report' > target/report.html
+'''
         publishHTML (target: [
           allowMissing: false,
           alwaysLinkToLastBuild: false,
